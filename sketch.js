@@ -10,12 +10,14 @@ var form, player, game;
 
 var cars, car1, car2, car3, car4;
 var car1Img, car2Img, car3Img, car4Img;
+var trackImg;
 
 function preload(){
    car1Img = loadImage("images/car1.png")
    car2Img = loadImage("images/car2.png")
    car3Img = loadImage("images/car3.png")
    car4Img = loadImage("images/car4.png")
+   trackImg = loadImage("images/track.jpg")
 }
 
 
@@ -38,4 +40,6 @@ function draw(){
     clear();
     game.play();
   }
+  console.log(displayWidth)
+  console.log(displayHeight)
 }
