@@ -50,13 +50,18 @@ class Game {
     Player.getPlayerInfo();
     
     if(allPlayers !== undefined){
+
+      background("white")
+      image(trackImg,0,-displayHeight*4+100,displayWidth,displayHeight*5)
+
+
       //var display_position = 100;
       
       //index of the array
       var index = 0;
 
       //x and y position of the cars
-      var x = 0;
+      var x = 300;
       var y;
 
       for(var plr in allPlayers){
@@ -64,14 +69,17 @@ class Game {
         index = index + 1 ;
 
         //position the cars a little away from each other in x direction
-        x = x + 200;
+        x = x + 260;
         //use data form the database to display the cars in y direction
         y = displayHeight - allPlayers[plr].distance;
         cars[index-1].x = x;
         cars[index-1].y = y;
 
         if (index === player.index){
-          cars[index - 1].shapeColor = "red";
+          //cars[index - 1].shapeColor = "red";
+
+          fill("red")
+          ellipse(cars[index-1].x,cars[index-1].y,30,30)
           camera.position.x = displayWidth/2;
           camera.position.y = cars[index-1].y
         }
@@ -82,6 +90,10 @@ class Game {
 
     }
 
+    if(player.distance>5090){
+      gameState=2
+      console.log("GAME END")
+    }
     if(keyIsDown(UP_ARROW) && player.index !== null){
       player.distance +=10
       player.update();
