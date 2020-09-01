@@ -27,7 +27,6 @@ function setup(){
   game = new Game();
   game.getState();
   game.start();
-
  
 }
 
