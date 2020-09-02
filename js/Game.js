@@ -48,6 +48,8 @@ class Game {
     form.hide();
 
     Player.getPlayerInfo();
+
+    player.getCarsAtEnd();
     
     if(allPlayers !== undefined){
 
@@ -94,13 +96,35 @@ class Game {
 
     if(player.distance>5090){
       gameState=2
-      console.log("GAME END")
+      player.rank+=1
+      Player.updateCarsAtEnd(player.rank)
+      //console.log("GAME END")
     }
     if(keyIsDown(UP_ARROW) && player.index !== null){
       player.distance +=10
       player.update();
     }
 
+    drawSprites();
+  }
+
+  end(){
+  
+  console.log("GAME HAS ENDED")
+   sprRank = createSprite(displayWidth/2,-4020,30,30);
+  
+  switch(player.rank){
+    case 1: sprRank.addImage(rank1Img);
+     break;
+    case 2: sprRank.addImage(rank2Img) 
+     break;
+    case 3: sprRank.addImage(rank3Img)
+     break;
+    case 4: sprRank.addImage(rank4Img)
+     break;
+    default:
+     break;
+    }
     drawSprites();
   }
 }
